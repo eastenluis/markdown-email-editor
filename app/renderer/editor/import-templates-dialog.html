@@ -1,0 +1,35 @@
+<form name="templateForm" v-el:template-form>
+    <ui-modal class="import-templates-dialog" :show.sync="show" header="New Template" backdrop="false" :backdrop-dismissible="false" @closed="onClose">
+        <div>
+            <div class="form-group">
+                <ui-textbox label="Name" name="name" :value.sync="templateName" class="form-group" validation-rules="required"></ui-textbox>
+            </div>
+            <div class="form-group">
+                <label>Container</label>
+                <input type="file" name="container" accept=".html" required="true" @change="templateSelected('container', $event)">
+                <span class="help-block">A <strong>container.html</strong> that defines the wrapper of email contents. 
+                    It should contains the html header, footer and styles for elements within the email.</span>
+            </div>
+            <div class="form-group">
+                <label>Header 1</label>
+                <input type="file" name="h1" accept=".html" required="true" @change="templateSelected('h1', $event)">
+            </div>
+            <div class="form-group">
+                <label>Header 2</label>
+                <input type="file" name="h2" accept=".html" required="true" @change="templateSelected('h2', $event)">
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" name="image" accept=".html" required="true" @change="templateSelected('image', $event)">
+            </div>
+            <div class="form-group">
+                <label>Paragraph</label>
+                <input type="file" name="paragraph" accept=".html" required="true" @change="templateSelected('paragraph', $event)">
+            </div>
+        </div>
+        <div slot="footer">
+            <ui-button button-type="button" :disabled="!isAllPropertiesFilled" color="primary" @click="importTemplate">Import</ui-button>
+            <ui-button button-type="reset" @click="cancel" v-if="!requireImport">Cancel</ui-button>
+        </div>
+    </ui-modal>
+</form>

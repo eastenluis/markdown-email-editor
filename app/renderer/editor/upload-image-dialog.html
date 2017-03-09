@@ -1,0 +1,15 @@
+<div>
+    <ui-modal role="dialog" class="upload-image-modal" header="Insert Image" :show.sync="show" :backdrop-dismissible="false"
+        hide-footer>
+        <div class="modal-body">
+            <upload-browse :file-selected="imagesSelected" :accept="acceptImgTypes">
+                <ui-button color="primary">
+                    Browse Image Files
+                </ui-button>
+            </upload-browse>
+            <file-drop :file-selected="imagesSelected" :accept-types="acceptedDropTypes">
+                <div>or Drop Image Files here</div>
+            </file-drop>
+        </div>
+    </ui-modal>
+</div>

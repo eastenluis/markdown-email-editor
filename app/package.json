@@ -1,0 +1,26 @@
+{
+  "name": "mdemail",
+  "version": "0.0.2",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "NODE_ENV=debug electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/eastenluis/markdown-email-editor.git"
+  },
+  "author": "Martin Lai",
+  "license": "MIT",
+  "dependencies": {
+    "archiver": "^1.0.1",
+    "juice": "^2.0.0",
+    "keen-ui": "^0.8.9",
+    "localforage": "^1.4.2",
+    "lodash": "^4.15.0",
+    "markdown": "^0.5.0",
+    "mustache": "^2.2.1",
+    "node-uuid": "^1.4.7",
+    "vue": "^1.0.26"
+  }
+}

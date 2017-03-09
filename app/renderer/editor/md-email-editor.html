@@ -1,0 +1,43 @@
+<div class="md-email-editor">
+    <div class="toolbar">
+        <div class="left">
+            <ui-button button-type="button" @click="newFile()" type="flat" icon="insert_drive_file">New File</ui-button>
+            <ui-button button-type="button" @click="showImageDialog()" type="flat" icon="add_a_photo">Insert Image</ui-button>
+            <ui-button class="template-list" button-type="button" type="flat" :has-popover="true" :show-menu-icons="true">
+                {{ curTemplate ? curTemplate.name : 'Select a template...' }}
+                <ul class="popover-menu" slot="popover">
+                    <li v-for="template in templates" :class="template.id === curTemplate.id ? 'active' : ''">
+                        <ui-button button-type="button" class="popover-item-text" type="flat" @click="templateSelected(template)">{{ template.name }}</ui-button>
+                        <ui-icon-button button-type="button" class="popover-item-addon" type="flat" icon="delete" @click="confirmDeleteTemplate(template)"></ui-icon-button>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <ui-button button-type="button" class="popover-item-text" type="flat" @click="addNewTemplate">Add a new template</ui-button>
+                    </li>
+                </ul>
+            </ui-button>
+        </div>
+        <div class="right">
+            <select-directory :directory-selected="exportEmail">
+                <ui-button type="flat" icon="file_download">Export To...</ui-button>
+            </select-directory>
+        </div>
+    </div>
+    <div class="editor">
+        <div class="editor-container">
+            <textarea placeholder="Start write email in markdown." v-model="mdText" name="md-text" debounce="500" auto-focus></textarea>
+        </div>
+        <div class="preview-container">
+            <webview nodeintegration src="./renderer/editor/preview.html"></webview>
+        </div>
+    </div>
+    <ui-snackbar-container class="snack-bar-container" position="right" :queue-snackbars="true"></ui-snackbar-container>
+    <upload-image-dialog :show.sync="imageDialogDisplaying" :images-selected="imagesSelected"></upload-image-dialog>
+    <import-templates-dialog :show.sync="importDialogDisplaying" :import-new-template="importNewTemplate" :require-import="requireImport">
+    </import-templates-dialog>
+    <ui-confirm header="Delete Template" :show.sync="deleteTemplateDialog.show" type="danger" confirm-button-text="Delete" @confirmed="deleteTemplate"
+        :backdrop-dismissible="false">
+        Are you sure you want to delete template {{ deleteTemplateDialog && deleteTemplateDialog.template ? deleteTemplateDialog.template.name
+        : '' }}?
+    </ui-confirm>
+</div>

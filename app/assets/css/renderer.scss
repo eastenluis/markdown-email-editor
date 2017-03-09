@@ -1,0 +1,114 @@
+@import './components.scss';
+
+html, body {
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    
+    > label, .ui-textbox-label-text {
+        color: #333;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .help-block {
+        color: #999;
+        font-size: 0.9em;
+        display: block;
+        margin-top: 10px;
+    }
+}
+
+.md-email-editor {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .ui-alert {
+        position: absolute;
+        top: 10px;
+    }
+
+    .toolbar {
+        flex: 0 0 auto;
+        padding: 5px;
+        display: flex;
+        flex-direction: row;
+        
+        > * > * {
+            vertical-align: middle;
+        }
+
+        .left {
+            flex: 1 1 auto;
+        }
+
+        .right {
+            flex: 0 0 auto;
+        }
+    }
+
+    .upload-image-modal {
+        text-align: center;
+
+        .btn-browse {
+            font-size: 20px;
+            padding: 10px 15px;
+            font-weight: normal;
+            width: 400px;
+        }
+
+        .file-drop {
+            margin-top: 20px;
+            display: inline-block;
+            border: 1px dashed #CCCCCC;
+            width: 400px;
+            height: 300px;
+            color: #CCC;
+            padding-top: 130px;
+            font-size: 20px;
+        }
+    }
+
+    .editor {
+        flex: 1 1 auto;
+        border-top: 1px solid #CCC;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+
+        > * {
+            flex: 1 1 50%;
+            height: 100%;
+            padding: 10px;
+        }
+
+        .preview-container {
+            border-left: 1px solid #CCC;
+        }
+        
+        textarea {
+            letter-spacing: 0.06em;
+            border: 0 none;
+            width: 100%;
+            height: 100%;
+            resize: none;
+            &:focus {
+                outline: none;
+            }
+        }
+        
+        webview {
+            height: 100%;
+        }
+    }
+}

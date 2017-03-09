@@ -1,0 +1,30 @@
+{
+  "name": "markdown-email-editor-packager",
+  "version": "0.0.2",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "compile-sass": "node-sass ./app/assets/css/renderer.scss -o ./app/assets/css/",
+    "start": "cross-env NODE_ENV=debug electron app",
+    "pack-mac": "electron-packager app mdemail --out ./build --platform=darwin --arch=x64 --icon ./app/icon.icns --overwrite --asar",
+    "pack-win": "electron-packager app mdemail --out ./build --platform=win32 --arch=all --icon ./app/icon.ico --overwrite --asar"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/eastenluis/markdown-email-editor.git"
+  },
+  "author": "Martin Lai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eastenluis/markdown-email-editor/issues"
+  },
+  "homepage": "https://github.com/eastenluis/markdown-email-editor#README",
+  "devDependencies": {
+    "asar": "^0.12.1",
+    "cross-env": "^2.0.0",
+    "electron-packager": "^7.4.0",
+    "electron-prebuilt": "^1.3.0",
+    "node-sass": "^3.8.0"
+  },
+  "dependencies": {}
+}
