@@ -1,5 +1,5 @@
 const {app} = require('electron').remote;
-let Vue = require('vue');
+const Vue = require('vue');
 let localForage = require('localforage');
 let Keen = require('keen-ui');
 
